@@ -16,7 +16,15 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.getRecycledViewPool();
 
 
-        recyclerView.setItemViewCacheSize(Integer.MAX_VALUE);
+//        recyclerView.setItemViewCacheSize(Integer.MAX_VALUE);
+        recyclerView.getRecycledViewPool().setMaxRecycledViews(1,11);
+        recyclerView.getRecycledViewPool().setMaxRecycledViews(2,12);
+        recyclerView.getRecycledViewPool().setMaxRecycledViews(3,13);
+        recyclerView.getRecycledViewPool().setMaxRecycledViews(4,14);
+        recyclerView.getRecycledViewPool().setMaxRecycledViews(5,15);
+        recyclerView.getRecycledViewPool().setMaxRecycledViews(6,16);
+        recyclerView.getRecycledViewPool().setMaxRecycledViews(7,17);
+
 //        recyclerView.getRecycledViewPool().setMaxRecycledViews(7,10);
 //        recyclerView.getRecycledViewPool().setMaxRecycledViews(6,10);
 //        recyclerView.getRecycledViewPool().setMaxRecycledViews(5,10);

@@ -15,6 +15,8 @@ import java.util.Random;
 
 public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
+    private static final String TAG = MessageAdapter.class.getSimpleName();
+
     private List<Message> mMessages = new ArrayList<>();
     private int[] mUsernameColors;
     String path1 ="http://mp1.jmstatic.com/c_zoom,w_1080,q_70//jmstore/image/000/002/2034_std/5705cc98ae83c_1024_512.jpg?1462759494";
@@ -36,16 +38,19 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     public MessageAdapter(Context context) {
         this.mContext =context;
+
+        int size = 1000;
+
         //type==1
         Random random =new Random();
-        for (int i = 0; i <10 ; i++) {
+        for (int i = 0; i <size ; i++) {
             Message msg = new Message();
             msg.type=1;
             msg.path =paths[random.nextInt(9)];
             mMessages.add(msg);
         }
         //type==2
-        for (int i = 0; i <10 ; i++) {
+        for (int i = 0; i <size ; i++) {
             Message msg = new Message();
             msg.type=2;
             msg.path =paths[random.nextInt(9)];
@@ -55,7 +60,7 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
 
         //type==4
-        for (int i = 0; i <10 ; i++) {
+        for (int i = 0; i <size ; i++) {
             Message msg = new Message();
             msg.type=4;
             msg.path =paths[random.nextInt(9)];
@@ -63,7 +68,7 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         }
 
         //type==3
-        for (int i = 0; i <10 ; i++) {
+        for (int i = 0; i <size ; i++) {
             Message msg = new Message();
             msg.type=3;
             msg.path =paths[random.nextInt(9)];
@@ -71,7 +76,7 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         }
 
         //type==5
-        for (int i = 0; i <10 ; i++) {
+        for (int i = 0; i <size ; i++) {
             Message msg = new Message();
             msg.type=6;
             msg.path =paths[random.nextInt(9)];
@@ -79,7 +84,7 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         }
 
         //type==5
-        for (int i = 0; i <10 ; i++) {
+        for (int i = 0; i <size ; i++) {
             Message msg = new Message();
             msg.type=5;
             msg.path =paths[random.nextInt(9)];
@@ -89,7 +94,7 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
 
         //type==5
-        for (int i = 0; i <10 ; i++) {
+        for (int i = 0; i <30 ; i++) {
             Message msg = new Message();
             msg.type=7;
             msg.path =paths[random.nextInt(9)];
@@ -97,12 +102,12 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         }
 
         //type==5
-        for (int i = 0; i <50 ; i++) {
-            Message msg = new Message();
-            msg.type=random.nextInt(6)+1;
-            msg.path =paths[random.nextInt(9)];
-            mMessages.add(msg);
-        }
+//        for (int i = 0; i <1000 ; i++) {
+//            Message msg = new Message();
+//            msg.type=random.nextInt(6)+1;
+//            msg.path =paths[random.nextInt(9)];
+//            mMessages.add(msg);
+//        }
     }
 
 
@@ -112,7 +117,7 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         RecyclerView.ViewHolder holer = null;
         onCreateViewHolder++;
-        Log.d("onCreateViewHolder =" ,onCreateViewHolder+"");
+        Log.i(TAG, "onCreateViewHolder方法调用了:viewType=" + viewType + ",onCreateViewHolder=" + onCreateViewHolder);
         View view = null;
         switch (viewType) {
             case 1:
@@ -150,6 +155,7 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        Log.i(TAG, "onBindViewHolder方法调用了:position=" + position);
         Message message = mMessages.get(position);
         switch (message.type) {
             case 1:
@@ -189,14 +195,23 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
     int count =0;
+    int count1 =0;
+    int count2 =0;
+    int count3 =0;
+    int count4 =0;
+    int count5 =0;
+    int count6 =0;
+    int count7 =0;
+
+
     public class ViewHolder1 extends RecyclerView.ViewHolder {
         private ImageView image1;
 
         public ViewHolder1(View itemView) {
             super(itemView);
             count++;
-            Log.d("总创建对象",count+"");
-            Log.d("当前type =","1");
+            count1++;
+            Log.i(TAG, "总创建对象" + count+",当前type = 1,当前个数:" + count1);
             image1 = (ImageView) itemView.findViewById(R.id.image);
         }
     }
@@ -207,8 +222,8 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         public ViewHolder2(View itemView) {
             super(itemView);
             count++;
-            Log.d("总创建对象",count+"");
-            Log.d("当前type =","2");
+            count2++;
+            Log.i(TAG, "总创建对象" + count+",当前type = 2,当前个数:" + count2);
             image1 = (ImageView) itemView.findViewById(R.id.image);
         }
     }
@@ -219,8 +234,8 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         public ViewHolder3(View itemView) {
             super(itemView);
             count++;
-            Log.d("总创建对象",count+"");
-            Log.d("当前type =","3");
+            count3++;
+            Log.i(TAG, "总创建对象" + count+",当前type = 3,当前个数:" + count3);
             image1 = (ImageView) itemView.findViewById(R.id.image);
         }
     }
@@ -231,8 +246,8 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         public ViewHolder4(View itemView) {
             super(itemView);
             count++;
-            Log.d("总创建对象",count+"");
-            Log.d("当前type =","4");
+            count4++;
+            Log.i(TAG, "总创建对象" + count+",当前type = 4,当前个数:" + count4);
             image1 = (ImageView) itemView.findViewById(R.id.image);
             image2 = (ImageView) itemView.findViewById(R.id.image1);
         }
@@ -244,8 +259,8 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         public ViewHolder5(View itemView) {
             super(itemView);
             count++;
-            Log.d("总创建对象",count+"");
-            Log.d("当前type =","5");
+            count5++;
+            Log.i(TAG, "总创建对象" + count+",当前type = 5,当前个数:" + count5);
         }
     }
 
@@ -255,8 +270,8 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         public ViewHolder6(View itemView) {
             super(itemView);
             count++;
-            Log.d("总创建对象",count+"");
-            Log.d("当前type =","6");
+            count6++;
+            Log.i(TAG, "总创建对象" + count+",当前type = 6,当前个数:" + count6);
             image1 = (ImageView) itemView.findViewById(R.id.image);
             image2 = (ImageView) itemView.findViewById(R.id.image1);
         }
@@ -268,8 +283,8 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         public ViewHolder7(View itemView) {
             super(itemView);
             count++;
-            Log.d("总创建对象",count+"");
-            Log.d("当前type =","7");
+            count7++;
+            Log.i(TAG, "总创建对象" + count+",当前type = 7,当前个数:" + count7);
         }
     }
 
